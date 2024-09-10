@@ -7,5 +7,5 @@ fi
 
 for i in "$@";
 do
-	touch "ex"$i;
+	mkdir "ex"$i;
 done
