@@ -1,4 +1,4 @@
-html, body{
+.html, body{
     margin: 0;
     padding: 0;
     width: 100%;
@@ -8,13 +8,13 @@ html, body{
     align-items: center;
 }
 
-table {
+.table {
     width: 100%;
     height: 100%;
     border-collapse: collapse;
 }
 
-td {
+.td {
     text-align: center;
     font-size: 5vw;
     width: 50%;
