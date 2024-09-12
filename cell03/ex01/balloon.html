@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .balloon {
+            width: 200px;
+            height: 200px;
+            background-color: #ff0000;
+            border-radius: 100%;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .container {
+            background-color: pink;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            transition: all 3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" onmouseover="mouseLeaved()">
+
+        <div id="balloon" class="balloon" onclick="balloonClicked()">
+    
+        <script>
+            let color = 0;
+            let size = 200;
+            const balloon = document.getElementById('balloon');
+            const colorPalatte = ['#ff0000', '#008000', '#0000ff'];
+    
+            balloon.addEventListener("click", balloonClicked());
+            balloon.addEventListener("mouseleave", mouseLeaved());
+    
+            function balloonClicked() {
+                size += 10;
+                if (size > 420) {
+                    size = 200
+                    color = 2
+                }
+                balloon.style.width = size + 'px';
+                balloon.style.height = size + 'px';
+                balloon.style.backgroundColor = colorPalatte[color];
+                color += 1
+                if (color > 2)
+                    color = 0
+            }
+    
+            function mouseLeaved() {
+                size -= 5;
+                if (size < 200)
+                    size = 200
+                balloon.style.width = size + 'px';
+                balloon.style.height = size + 'px';
+                balloon.style.backgroundColor = colorPalatte[color];
+                if (color < 0)
+                color = 2
+                if (size > 200) {
+                    color -= 1
+                    mouseLeaved()
+                }
+            }
+    
+        </script>
+
+        </div>
+    </div>
+
+</body>
+</html>
