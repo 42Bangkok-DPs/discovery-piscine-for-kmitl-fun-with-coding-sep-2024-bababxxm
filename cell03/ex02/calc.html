@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+
+        .calculator {
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        #button, #operator {
+            cursor: pointer;
+            padding: 12px 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        #leftOperand, #rightOperand {
+            padding: 12px 20px;
+        }
+
+    </style>
+
+    <div class="calculator">
+        <input id="leftOperand" type="number" min="0" placeholder="Input a number">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input id="rightOperand" type="number" min="0" placeholder="Input a number">
+        <button id="button" onclick="calculate()">Try me!</button>
+    </div>
+
+    <script>
+        function calculate() {
+            const left = parseInt(document.getElementById('leftOperand').value);
+            const operator = document.getElementById('operator').value;
+            const right = parseInt(document.getElementById('rightOperand').value);
+
+            if (isNaN(left) || isNaN(right) || left < 0 || right < 0) {
+                alert('Error :(');
+                return;
+            }
+            
+            if ((left === 0 || right === 0) && (operator === '/' || operator === '%')) {
+                alert("It's over 9000!");
+                console.log("It's over 9000!");
+                return;
+            }
+
+            let res;
+            switch (operator) {
+                case '+':
+                    res = left + right;
+                    break;
+                case '-':
+                    res = left - right;
+                    break;
+                case '*':
+                    res = left * right;
+                    break;
+                case '/':
+                    res = left / right;
+                    break;
+                case '%':
+                    res = left % right;
+                    break;
+            }
+            alert(res);
+            console.log(res);
+        }
+
+        function thirtySecondAlert() {
+            alert('Please, use me...');
+        }
+
+        setInterval(thirtySecondAlert , 30000);
+    </script>
+    
+</body>
+</html>
