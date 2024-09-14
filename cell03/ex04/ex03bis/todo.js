@@ -24,7 +24,7 @@ $(document).ready(function() {
         $('#ft_list .task').each(function() {
             tasks.push($(this).text().replace(' Delete', ''));
         });
-        document.cookie = "tasks=" + JSON.stringify(tasks) + ";path=/";
+        document.cookie = "tasks=" + JSON.stringify(tasks);
     }
 
     function loadTasks() {
