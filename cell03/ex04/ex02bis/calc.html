@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+        }
+    
+        .calculator {
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    
+        #btn, #operator {
+            cursor: pointer;
+            padding: 12px 20px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+        }
+    
+        #leftOperand, #rightOperand {
+            padding: 12px 20px;
+        }
+    
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="calculator">
+        <input id="leftOperand" type="text" placeholder="Input a number">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input id="rightOperand" type="text" placeholder="Input a number">
+        <button id="btn">Try me!</button>
+    </div>
+
+    <script>
+       $(document).ready(function() {
+           setInterval(function () {alert('Please, use me...');}, 30000);
+           
+           $('#btn').click(function() {
+                var left = parseInt($("#leftOperand").val(), 10);
+                const operator = document.getElementById('operator').value;
+                var right = parseInt($("#rightOperand").val(), 10);
+                
+                console.log(left, right, operator);
+               
+                if (isNaN(left) || isNaN(right) || left < 0 || right < 0) {
+                    alert('Error :(');
+                    return;
+                }
+                
+                if ((left === 0 || right === 0) && (operator === '/' || operator === '%')) {
+                    alert("It's over 9000!");
+                    console.log("It's over 9000!");
+                    return;
+                }
+
+                let res;
+                switch (operator) {
+                    case '+':
+                        res = left + right;
+                        break;
+                    case '-':
+                        res = left - right;
+                        break;
+                    case '*':
+                        res = left * right;
+                        break;
+                    case '/':
+                        res = left / right;
+                        break;
+                    case '%':
+                        res = left % right;
+                        break;
+                }
+                alert(res);
+            });
+       });
+    </script>
+</body>
+</html>
