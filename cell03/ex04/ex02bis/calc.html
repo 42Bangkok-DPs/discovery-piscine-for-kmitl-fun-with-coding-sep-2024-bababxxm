@@ -53,14 +53,15 @@
            setInterval(function () {alert('Please, use me...');}, 30000);
            
            $('#btn').click(function() {
-                var left = parseInt($("#leftOperand").val(), 10);
+                const left = parseInt($("#leftOperand").val(), 10);
                 const operator = document.getElementById('operator').value;
-                var right = parseInt($("#rightOperand").val(), 10);
+                const right = parseInt($("#rightOperand").val(), 10);
                 
                 console.log(left, right, operator);
                
                 if (isNaN(left) || isNaN(right) || left < 0 || right < 0) {
                     alert('Error :(');
+                    console.log('Error :(')
                     return;
                 }
                 
@@ -89,6 +90,7 @@
                         break;
                 }
                 alert(res);
+                console.log(res);
             });
        });
     </script>
